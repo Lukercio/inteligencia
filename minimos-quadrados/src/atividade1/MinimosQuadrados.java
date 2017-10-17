@@ -171,7 +171,8 @@ public class MinimosQuadrados {
             for(int i = 0; i < matrizX.length; i++) {
                 matrizTemp[i][col] = matrizX[i][col-1] * matrizX[i][col-1];
             }
-
+            matrizX = new double[matrizTemp.length][matrizTemp[0].length];
+            matrizX = matrizTemp;
         }
 
         inversaMultiplicacaoMatrizX = calculaInversa(multiplicaMatriz(calculaTransposta(matrizX), matrizX));
