@@ -153,13 +153,6 @@ public class MinimosQuadrados {
         return det;
     }
 
-    /*
-     X = np.array([np.append(i, i[col-1]*i[col-1]) for i in X])
-
-    inv = calc_inversa(np.dot(np.transpose(X), X))
-
-    * */
-
     public static double[][] calculaMMQ(double[][] matrizX, double[][] matrizY, boolean linear) {
         int lin = matrizX.length;
         int col = matrizX[0].length;
@@ -182,20 +175,12 @@ public class MinimosQuadrados {
         }
 
         inversaMultiplicacaoMatrizX = calculaInversa(multiplicaMatriz(calculaTransposta(matrizX), matrizX));
-
-        exibeMatriz(inversaMultiplicacaoMatrizX, "inversaMultiplicacaoMatrizX");
-
-        exibeMatriz(calculaTransposta(matrizX),"calculaTransposta(matrizX)");
-        exibeMatriz(matrizY, "matrizY:");
-
         traspXporY = multiplicaMatriz( calculaTransposta(matrizX) , matrizY);
-        exibeMatriz(traspXporY,"traspXporY");
 
         return multiplicaMatriz(inversaMultiplicacaoMatrizX, (traspXporY));
     }
 
-        // Executa comandos em sequencia
-    public static void main(String []args){
+    public static void testMetodos() {
         int entrada, i, j;
         Scanner n = new Scanner( System.in );
 
@@ -221,9 +206,12 @@ public class MinimosQuadrados {
 
         // Teste Matriz Transposta
         exibeMatriz(calculaTransposta(matriz), "Matriz transposta:" );
+    }
 
+        // Executa comandos em sequencia
+    public static void main(String []args){
+        //testMetodos();
 
-        //exibeMatriz(multiplicaMatriz(matriz1,matriz2),"multi");
         double[][] matriz1 = { {1,69}, {1,67}, {1,71}, {1,65}, {1,72}, {1,68}, {1,74}, {1,65}, {1,66}, {1,72}} ;
         double[][] matriz2 = { {9.5}, {8.5}, {11.5}, {10.5}, {11}, {7.5},{12}, {7}, {7.5},{13}};
 
