@@ -208,34 +208,17 @@ public class MinimosQuadrados {
         // Teste Matriz Transposta
         exibeMatriz(calculaTransposta(matriz), "Matriz transposta:" );
 
-        double[][] matriz1 = { {1,69}, {1,67}, {1,71}, {1,65}, {1,72}, {1,68}, {1,74}, {1,65}, {1,66}, {1,72}};
-        double[][] matriz2 = { {9.5, 8.5, 11.5, 10.5, 11, 7.5,12, 7, 7.5,13 }};
-exibeMatriz(multiplicaMatriz(matriz1,matriz2),"ulti");
-        exibeMatriz(calculaMMQ(matriz1, matriz2, false), "Calculo MMQ");
+
+        //exibeMatriz(multiplicaMatriz(matriz1,matriz2),"multi");
+        //exibeMatriz(calculaMMQ(matriz1, matriz2, false), "Calculo MMQ");
 
 
-        /*
-
-
-y = np.array([
-    [9.5],
-    [8.5],
-    [11.5],
-    [10.5],
-    [11],
-    [7.5],
-    [12],
-    [7],
-    [7.5],
-    [13]
-])*/
 //        exibeMatriz(multiplicaMatriz(matriz2, matriz1), "Multiplicacao");
- //       exibeMatriz(calculaTransposta(multiplicaMatriz(matriz2, matriz1)), "MultiplicacaoTrans");
+//        exibeMatriz(calculaTransposta(multiplicaMatriz(matriz2, matriz1)), "MultiplicacaoTrans");
 
+//        exibeMatriz(calculaInversa(matriz), "Inversa");
 
-  //      exibeMatriz(calculaInversa(matriz), "Inversa");
-
-    //    System.out.println("Det: " + calculaDeterminante(matriz));
+//        System.out.println("Det: " + calculaDeterminante(matriz));
 
     }
 
