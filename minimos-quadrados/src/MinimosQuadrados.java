@@ -64,26 +64,31 @@ public class MinimosQuadrados {
         int tamanho = matriz.length;
         double[][] adjunta = new double[tamanho][tamanho];
 
+        if (tamanho < 4 && tamanho >1 ) {
 
-        if (tamanho == 2) {
-            adjunta[0][0] = matriz[1][1];
-            adjunta[0][1] = -matriz[1][0];
-            adjunta[1][0] = -matriz[0][1];
-            adjunta[1][1] = matriz[0][0];
+            if (tamanho == 2) {
+                adjunta[0][0] = matriz[1][1];
+                adjunta[0][1] = -matriz[1][0];
+                adjunta[1][0] = -matriz[0][1];
+                adjunta[1][1] = matriz[0][0];
 
-        } else if (tamanho == 3) {
-            double[][] temp = new double[2][2];
+            } else if (tamanho == 3) {
+                double[][] temp = new double[2][2];
 
-            for (int i = 0; i < tamanho; i++) {
-                for (int j = 0; j < tamanho; j++) {
-                    temp[0][0] = matriz[(i + 1) % 3][(j + 1) % 3];
-                    temp[0][1] = matriz[(i + 1) % 3][(j + 2) % 3];
-                    temp[1][0] = matriz[(i + 2) % 3][(j + 1) % 3];
-                    temp[1][1] = matriz[(i + 2) % 3][(j + 2) % 3];
+                for (int i = 0; i < tamanho; i++) {
+                    for (int j = 0; j < tamanho; j++) {
+                        temp[0][0] = matriz[(i + 1) % 3][(j + 1) % 3];
+                        temp[0][1] = matriz[(i + 1) % 3][(j + 2) % 3];
+                        temp[1][0] = matriz[(i + 2) % 3][(j + 1) % 3];
+                        temp[1][1] = matriz[(i + 2) % 3][(j + 2) % 3];
 
-                    adjunta[i][j] = calculaDeterminante(temp);
+                        adjunta[i][j] = calculaDeterminante(temp);
+                    }
                 }
             }
+        } else {
+            System.out.println("Matriz não pode calcular adjunta. Não é 2x2 ou 3x3.");
+            System.exit(1);
         }
         return calculaTransposta(adjunta);
     }
@@ -93,15 +98,21 @@ public class MinimosQuadrados {
     public static double[][] calculaInversa(double[][] matriz) {
         int tamanho = matriz.length;
         double[][] inversa = new double[tamanho][tamanho];
-        double[][] adjunta = calculaAdjunta(matriz);
-        double determinante = calculaDeterminante(matriz);
 
-        exibeMatriz(adjunta, "ajunta");
-        System.out.println("d=" + determinante);
-        for (int i = 0; i < tamanho; i++){
-            for (int j = 0; j < tamanho; j++){
-                inversa[i][j] = (1/determinante) * adjunta[i][j];
+        if(tamanho < 4  && tamanho > 1) {
+            double[][] adjunta = calculaAdjunta(matriz);
+            double determinante = calculaDeterminante(matriz);
+
+            exibeMatriz(adjunta, "adjunta");
+            System.out.println("d=" + determinante);
+            for (int i = 0; i < tamanho; i++){
+                for (int j = 0; j < tamanho; j++){
+                    inversa[i][j] = (1/determinante) * adjunta[i][j];
+                }
             }
+        } else {
+            System.out.println("Matriz não pode calcular inversa. Não é 2x2 ou 3x3.");
+            System.exit(1);
         }
 
         return inversa;
@@ -169,6 +180,7 @@ public class MinimosQuadrados {
             }
 
         }
+        exibeMatriz(multiplicaMatriz(matrizX,calculaTransposta(matrizX)),"Multiplicacao pela transposta");
         inversaMultiplicacaoMatrizX = calculaInversa(multiplicaMatriz(matrizX, calculaTransposta(matrizX)));
         exibeMatriz(inversaMultiplicacaoMatrizX, "inversaMultiplicacaoMatrizX");
 
@@ -210,15 +222,16 @@ public class MinimosQuadrados {
 
 
         //exibeMatriz(multiplicaMatriz(matriz1,matriz2),"multi");
-        //exibeMatriz(calculaMMQ(matriz1, matriz2, false), "Calculo MMQ");
+        double[][] matriz1 = { {1,69}, {1,67}, {1,71}, {1,65}, {1,72}, {1,68}, {1,74}, {1,65}, {1,66}, {1,72}};
+        double[][] matriz2 = { {9.5, 8.5, 11.5, 10.5, 11, 7.5,12, 7, 7.5,13 }};
+        exibeMatriz(calculaMMQ(matriz1, matriz2, false), "Calculo MMQ");
 
 
-//        exibeMatriz(multiplicaMatriz(matriz2, matriz1), "Multiplicacao");
-//        exibeMatriz(calculaTransposta(multiplicaMatriz(matriz2, matriz1)), "MultiplicacaoTrans");
+//      exibeMatriz(multiplicaMatriz(matriz2, matriz1), "Multiplicacao");
+//      exibeMatriz(calculaTransposta(multiplicaMatriz(matriz2, matriz1)), "MultiplicacaoTrans");
+        exibeMatriz(calculaInversa(matriz), "Inversa");
 
-//        exibeMatriz(calculaInversa(matriz), "Inversa");
-
-//        System.out.println("Det: " + calculaDeterminante(matriz));
+//      System.out.println("Det: " + calculaDeterminante(matriz));
 
     }
 
