@@ -38,7 +38,8 @@ public class MinimosQuadrados {
     // Multiplica Matrizes
     public static double[][] multiplicaMatriz(double[][] matriz_1, double[][] matriz_2){
         int tamanho = matriz_1.length;
-        if (matriz_1[0].length > matriz_1.length){
+
+        if (matriz_2[0].length > matriz_1.length){
             tamanho = matriz_1[0].length;
         }
 
@@ -180,8 +181,10 @@ public class MinimosQuadrados {
             }
 
         }
-        exibeMatriz(multiplicaMatriz(matrizX,calculaTransposta(matrizX)),"Multiplicacao pela transposta");
-        inversaMultiplicacaoMatrizX = calculaInversa(multiplicaMatriz(matrizX, calculaTransposta(matrizX)));
+        exibeMatriz(matrizX,"original");
+        exibeMatriz(calculaTransposta(matrizX),"transposta");
+        exibeMatriz(multiplicaMatriz(calculaTransposta(matrizX), matrizX),"Multiplicacao pela transposta");
+        inversaMultiplicacaoMatrizX = calculaInversa(multiplicaMatriz(calculaTransposta(matrizX), matrizX));
         exibeMatriz(inversaMultiplicacaoMatrizX, "inversaMultiplicacaoMatrizX");
 
 
@@ -222,14 +225,14 @@ public class MinimosQuadrados {
 
 
         //exibeMatriz(multiplicaMatriz(matriz1,matriz2),"multi");
-        double[][] matriz1 = { {1,69}, {1,67}, {1,71}, {1,65}, {1,72}, {1,68}, {1,74}, {1,65}, {1,66}, {1,72}};
+        double[][] matriz1 = { {1,69}, {1,67}, {1,71}, {1,65}, {1,72}, {1,68}, {1,74}, {1,65}, {1,66}, {1,72}} ;
         double[][] matriz2 = { {9.5, 8.5, 11.5, 10.5, 11, 7.5,12, 7, 7.5,13 }};
         exibeMatriz(calculaMMQ(matriz1, matriz2, false), "Calculo MMQ");
 
 
 //      exibeMatriz(multiplicaMatriz(matriz2, matriz1), "Multiplicacao");
 //      exibeMatriz(calculaTransposta(multiplicaMatriz(matriz2, matriz1)), "MultiplicacaoTrans");
-        exibeMatriz(calculaInversa(matriz), "Inversa");
+        exibeMatriz(calculaInversa(matriz1), "Inversa");
 
 //      System.out.println("Det: " + calculaDeterminante(matriz));
 
