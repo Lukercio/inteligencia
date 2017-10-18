@@ -101,8 +101,8 @@ public class MinimosQuadrados {
             double[][] adjunta = calculaAdjunta(matriz);
             double determinante = calculaDeterminante(matriz);
 
-            exibeMatriz(adjunta, "adjunta");
-            System.out.println("d=" + determinante);
+            //exibeMatriz(adjunta, "adjunta");
+            //System.out.println("d=" + determinante);
             for (int i = 0; i < tamanho; i++){
                 for (int j = 0; j < tamanho; j++){
                     inversa[i][j] = (1/determinante) * adjunta[i][j];
@@ -160,7 +160,6 @@ public class MinimosQuadrados {
         double[][] inversaMultiplicacaoMatrizX;
         double[][] traspXporY;
 
-
         if (!linear) {
             for (int i = 0; i < matrizX.length ; i++) {
                 for(int j = 0; j < matrizX[0].length; j++) {
@@ -173,6 +172,7 @@ public class MinimosQuadrados {
             }
             matrizX = new double[matrizTemp.length][matrizTemp[0].length];
             matrizX = matrizTemp;
+
         }
 
         inversaMultiplicacaoMatrizX = calculaInversa(multiplicaMatriz(calculaTransposta(matrizX), matrizX));
@@ -212,11 +212,11 @@ public class MinimosQuadrados {
         // Executa comandos em sequencia
     public static void main(String []args){
         //testMetodos();
-
+        boolean linear = true;
         double[][] matriz1 = { {1,69}, {1,67}, {1,71}, {1,65}, {1,72}, {1,68}, {1,74}, {1,65}, {1,66}, {1,72}} ;
         double[][] matriz2 = { {9.5}, {8.5}, {11.5}, {10.5}, {11}, {7.5},{12}, {7}, {7.5},{13}};
 
-        exibeMatriz(calculaMMQ(matriz1, matriz2, false), "Calculo MMQ - height x shoe size");
+        exibeMatriz(calculaMMQ(matriz1, matriz2, linear), "Calculo MMQ - height x shoe size");
 
 
     }
