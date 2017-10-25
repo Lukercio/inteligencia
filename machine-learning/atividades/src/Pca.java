@@ -4,8 +4,9 @@
 public class Pca extends Matriz{
 
     public static double[][] calculaPCA(double[][] matrizX, double[][] matrizY, boolean linear) {
+        exibeMatriz(calculaCovariancia(multiplicaMatriz(calculaTransposta(matrizX), matrizX)), "Covariancia Matrizx");
 
-
+        return calculaCovariancia(matrizX);
     }
 
     public static void main(String []args){

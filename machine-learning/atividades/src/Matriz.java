@@ -38,6 +38,29 @@ public class Matriz {
         return r;
     }
 
+    // Calcula Matriz de Covariancia
+    public static double[][] calculaCovariancia(double[][] matriz) {
+        int lin = matriz.length;
+        int col = matriz[0].length;
+        double[][] r = new double[lin][col];
+
+
+        for (int i = 0; i < col; i++){
+            double[] temp = new double[col];
+
+            for (int j = 0; j < col; j++){
+                double sum = 0;
+                for (int k = 0; k < lin; k++){
+                    sum = sum + (matriz[k][i])*(matriz[k][j]);
+                }
+                temp[j] = (sum/(lin-1));
+            }
+            r[i] = temp;
+        }
+
+        return r;
+    }
+
 
     // Calcula Adjunta
     public static  double[][] calculaAdjunta(double[][] matriz) {
