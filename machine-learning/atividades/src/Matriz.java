@@ -1,3 +1,5 @@
+import java.util.Vector;
+
 /**
  * Created by ldlopes on 10/24/17.
  */
@@ -33,6 +35,17 @@ public class Matriz {
                 r[i][j] = v;
                 v = 0;
             }
+        }
+
+        return r;
+    }
+
+    // Verifica se a Matriz é quadrada
+    public static boolean verificaMatrizQuadrada(double[][] matriz) {
+        boolean r = false;
+
+        if (matriz.length == matriz[0].length) {
+            r = true;
         }
 
         return r;
